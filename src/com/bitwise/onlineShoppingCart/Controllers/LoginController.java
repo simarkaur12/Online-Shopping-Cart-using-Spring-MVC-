@@ -20,4 +20,5 @@ public class LoginController {
 	public String logout(ModelMap model) {
 		return "/logout/logout";
 	}
+	
 }

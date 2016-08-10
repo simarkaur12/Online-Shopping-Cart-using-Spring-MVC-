@@ -18,8 +18,8 @@ public class LoginValidator implements Validator{
 		CustomerLogin customer = (CustomerLogin) obj;
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "uname", "error.uname", "Username is required");
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password", "error.password", "Password is required");
-		//if(customer.getPassword().length()<8){
-		//	errors.rejectValue("password", "smallLength", new Object[]{"'password'"},"Password must have more than 8 characters");
-		//}
+		if(customer.getUname().length()<=2){
+			errors.rejectValue("uname", "smallLength", new Object[]{"'uname'"},"Username must have more than 2 characters");
+		}
 	}
 }

@@ -17,51 +17,24 @@ $(document).ready(function(){
 	        type: "GET",
 	        data : {item:itemSelected},
 	        success : function(data) {
-	            $("#result").html(data);	            
+	            $("#result").html(data).css("color","blue");	            
 	        }
 	    });
 	});
 });
-function addToCart(){
-	var item = $("#items").val();
-	$.ajax({
-        url : "addToCart",
-        type: "POST",
-        data : {item:item},
-        success : function(data) {
-            alert("done");	            
-        }
-    });
-}
-function showMyCart(){
-	$.ajax({
-        url : "showMyCart",
-        type: "GET",
-        success : function(data) {
-            alert("shown");	            
-        }
-    });
-}
-function removeFromCart(){
-	$.ajax({
-        url : "removeFromCart",
-        type: "GET",
-        success : function(data) {
-            alert("shown");	            
-        }
-    });
-}
+
 </script> 
 </head>
 <body>
-Welcome <h2><font color="red">${message}</font></h2>
+Welcome <h2><font color="red">${uname}</font></h2>
+<h4><font color="red">${addToCartError}</font></h4>
 <h4><font color="green">${addedToCartOrNot}</font></h4>
-<h2>${addToCartError}</h2>
+
 <center>
 <fieldset>
   <legend><font size="5" color="green">Shop Here</font></legend>
   <br>
-	<form:form commandName="ProductList" method="post" action="/SpringOnlineShoppingCart/showMyCart">
+	<form:form commandName="ProductList" method="get" action="/SpringOnlineShoppingCart/showProductList">
 		<form:select path="selectedItem" id="items" name="items">
 			<form:option value="select">Select</form:option>
 			<form:option value="Car">Car</form:option>
@@ -70,10 +43,13 @@ Welcome <h2><font color="red">${message}</font></h2>
 			<form:option value="Bentley">Bentley</form:option>
 		</form:select>
 		<div id="result"></div>
-		
-		<input type="button" onclick="addToCart();" value="Add To Cart" />
-		<input type="submit" value="Show My Cart" />
+		<input type="submit" value="Add To Cart" />
 	</form:form>
+	
+	<form:form action="/SpringOnlineShoppingCart/showMyCart">
+	   <input type="submit" value="Show My Cart" />
+	</form:form>
+	
 </fieldset>
 </center>
 <%@include file="../logout/logoutButton.jsp" %>

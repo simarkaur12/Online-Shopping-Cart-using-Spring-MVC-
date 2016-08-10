@@ -22,9 +22,9 @@
   </filter>
   <filter-mapping>
     <filter-name>filterCartLogin</filter-name>
-    <url-pattern>/cart/placeOrder</url-pattern>
-    <url-pattern>/cart/RemoveSelectedProduct</url-pattern>
-    <url-pattern>/cart/showMyCart</url-pattern>
+    <url-pattern>/placeOrder</url-pattern>
+    <url-pattern>/RemoveSelectedProduct</url-pattern>
+    <url-pattern>/showMyCart</url-pattern>
   </filter-mapping>
 
   

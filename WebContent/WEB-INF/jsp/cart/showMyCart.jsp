@@ -9,13 +9,16 @@
 <title>Insert title here</title>
 </head>
 <body>
+
+<center>
+   <h3><font color="brown">Your Cart</font></h3>
         <ul>
 			<c:forEach var="l" items="${list}">
 				<li>${l.name}</li>
 			</c:forEach>
 		</ul>
 		
-		<form:form method="post" action="/SpringOnlineShoppingCart/RemoveSelectedProduct">
+		<form:form method="get" action="/SpringOnlineShoppingCart/RemoveSelectedProduct">
 		   <input type="submit" value="Remove From Cart" />
 		</form:form>
 		
@@ -25,5 +28,6 @@
 		</form:form>
 		
 		<%@include file="../logout/logoutButton.jsp" %>
+</center>
 </body>
 </html>

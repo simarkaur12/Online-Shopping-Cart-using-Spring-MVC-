@@ -9,15 +9,17 @@
 <title>Insert title here</title>
 </head>
 <body>
+<center>
+<h3><font color="GREEN">Place Your Order</font></h3>
 <h4>Product    Price</h4>
-<ul>
+         <ul>
 			<c:forEach var="l" items="${list}">
 				<li>${l.name}</li>-->${l.price}
 			</c:forEach>
 		</ul>
-		
 		<h3>Total Price:-</h3>
-		<h5>${totalAmount}</h5>
+		<h4>${totalAmount}</h4><span>${totalAmount}</span>
 		<%@include file="../logout/logoutButton.jsp" %>
+</center>
 </body>
 </html>

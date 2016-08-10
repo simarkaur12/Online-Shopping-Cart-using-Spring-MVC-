@@ -8,22 +8,29 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h2>
-  <font color="red">${message}</font>
-</h2>
+<h4>
+  <font color="red">${error}</font>
+</h4>
 <center>
     <h1>User Login</h1>
     <form:form commandName="CustomerLogin" method="post" action="/SpringOnlineShoppingCart/showProductList">
         <font size="5">User Name:</font>
         <form:input path="uname" />
-        <form:errors path="uname"></form:errors>
+        <br><br>
+        <font color="red">
+           <form:errors path="uname"></form:errors>
+        </font>
+        <br>
         <font size="5">Password:</font>
         <form:password path="password" />
-        <form:errors path="password"></form:errors>
+        <br><br>
+        <font color="red">
+            <form:errors path="password"></form:errors>
+        </font>
+        <br>
         <input type="submit" value="Submit">
     </form:form>
 </center>
-
 </body>
 </html>
 
