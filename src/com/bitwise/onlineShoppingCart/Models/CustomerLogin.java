@@ -1,4 +1,4 @@
-package com.bitwise.onlineShoppingCart;
+package com.bitwise.onlineShoppingCart.Models;
 
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;

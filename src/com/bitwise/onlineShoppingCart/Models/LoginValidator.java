@@ -1,4 +1,4 @@
-package com.bitwise.onlineShoppingCart;
+package com.bitwise.onlineShoppingCart.Models;
 
 import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;

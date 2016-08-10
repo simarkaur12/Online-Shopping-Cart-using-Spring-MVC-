@@ -18,13 +18,13 @@
   
   <filter>
     <filter-name>filterCartLogin</filter-name>
-    <filter-class>com.bitwise.onlineShoppingCart.filterCartLogin</filter-class>
+    <filter-class>com.bitwise.onlineShoppingCart.Filter.filterCartLogin</filter-class>
   </filter>
   <filter-mapping>
     <filter-name>filterCartLogin</filter-name>
-    <url-pattern>/placeOrder</url-pattern>
-    <url-pattern>/RemoveSelectedProduct</url-pattern>
-    <url-pattern>/showMyCart</url-pattern>
+    <url-pattern>/cart/placeOrder</url-pattern>
+    <url-pattern>/cart/RemoveSelectedProduct</url-pattern>
+    <url-pattern>/cart/showMyCart</url-pattern>
   </filter-mapping>
 
   

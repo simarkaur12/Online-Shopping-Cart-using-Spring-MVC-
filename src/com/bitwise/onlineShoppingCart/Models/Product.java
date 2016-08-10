@@ -1,4 +1,4 @@
-package com.bitwise.onlineShoppingCart;
+package com.bitwise.onlineShoppingCart.Models;
 
 public class Product {
 	

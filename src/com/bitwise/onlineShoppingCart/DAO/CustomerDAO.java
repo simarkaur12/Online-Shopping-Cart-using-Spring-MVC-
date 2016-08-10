@@ -1,4 +1,4 @@
-package com.bitwise.onlineShoppingCart;
+package com.bitwise.onlineShoppingCart.DAO;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -6,6 +6,10 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+
+import com.bitwise.onlineShoppingCart.Models.Product;
+import com.bitwise.onlineShoppingCart.Models.ProductList;
+import com.bitwise.onlineShoppingCart.exceptionHandling.allExceptions;
 
 public class CustomerDAO {
 	static ProductList productListObj = new ProductList();

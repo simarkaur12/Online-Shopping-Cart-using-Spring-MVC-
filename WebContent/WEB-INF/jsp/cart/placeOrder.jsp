@@ -18,6 +18,6 @@
 		
 		<h3>Total Price:-</h3>
 		<h5>${totalAmount}</h5>
-		<%@include file="logoutButton.jsp" %>
+		<%@include file="../logout/logoutButton.jsp" %>
 </body>
 </html>

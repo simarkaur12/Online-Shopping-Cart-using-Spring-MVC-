@@ -36,6 +36,6 @@ function removeProduct(){
 	  	  
 		</form:form>
 		
-		<%@include file="logoutButton.jsp" %>
+		<%@include file="../logout/logoutButton.jsp" %>
 </body>
 </html>

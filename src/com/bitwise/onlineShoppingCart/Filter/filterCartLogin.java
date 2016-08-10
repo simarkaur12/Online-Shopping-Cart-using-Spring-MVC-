@@ -1,4 +1,4 @@
-package com.bitwise.onlineShoppingCart;
+package com.bitwise.onlineShoppingCart.Filter;
 
 import java.io.IOException;
 import javax.servlet.Filter;

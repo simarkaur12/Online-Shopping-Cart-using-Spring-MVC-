@@ -1,4 +1,4 @@
-package com.bitwise.onlineShoppingCart;
+package com.bitwise.onlineShoppingCart.Models;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -16,7 +16,7 @@ public class ProductList {
 		allProducts.add(new Product("Watch",30000,"White",50));
 		allProducts.add(new Product("Bentley",385000,"Red",1));
 	}
-	ArrayList<Product> getAllProducts(){
+	public ArrayList<Product> getAllProducts(){
 		return allProducts;
 	}
 	public String getSelectedItem() {

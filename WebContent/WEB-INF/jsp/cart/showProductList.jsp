@@ -76,6 +76,6 @@ Welcome <h2><font color="red">${message}</font></h2>
 	</form:form>
 </fieldset>
 </center>
-<%@include file="logoutButton.jsp" %>
+<%@include file="../logout/logoutButton.jsp" %>
 </body>
 </html>

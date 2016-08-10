@@ -14,7 +14,7 @@
 
    <context:component-scan base-package="com.bitwise.onlineShoppingCart" />
 	<mvc:annotation-driven />
-   <bean id="allExceptions" class="com.bitwise.onlineShoppingCart.allExceptions"></bean>
+   <bean id="allExceptions" class="com.bitwise.onlineShoppingCart.exceptionHandling.allExceptions"></bean>
 
    
    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -22,7 +22,7 @@
       <property name="suffix" value=".jsp" />
    </bean>
   
-   <bean id="LoginValidator" class="com.bitwise.onlineShoppingCart.LoginValidator">
+   <bean id="LoginValidator" class="com.bitwise.onlineShoppingCart.Models.LoginValidator">
    </bean>
   
    

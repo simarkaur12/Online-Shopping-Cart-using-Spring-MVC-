@@ -1,4 +1,4 @@
-package com.bitwise.onlineShoppingCart;
+package com.bitwise.onlineShoppingCart.Models;
 
 import java.util.HashMap;
 
@@ -13,7 +13,7 @@ public class CustomerDetails {
 	    security.put("aaa", "aaa");
 	}
 	
-	HashMap<String, String> getSecurity(){
+	public HashMap<String, String> getSecurity(){
 		return security;
 	}
 	

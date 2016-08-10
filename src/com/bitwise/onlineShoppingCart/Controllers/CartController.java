@@ -1,4 +1,4 @@
-package com.bitwise.onlineShoppingCart;
+package com.bitwise.onlineShoppingCart.Controllers;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -22,6 +22,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.bitwise.onlineShoppingCart.DAO.CustomerDAO;
+import com.bitwise.onlineShoppingCart.Models.CustomerDetails;
+import com.bitwise.onlineShoppingCart.Models.CustomerLogin;
+import com.bitwise.onlineShoppingCart.Models.LoginValidator;
+import com.bitwise.onlineShoppingCart.Models.Product;
+import com.bitwise.onlineShoppingCart.Models.ProductList;
+import com.bitwise.onlineShoppingCart.exceptionHandling.allExceptions;
+
 @Controller
 @Scope("request")
 public class CartController {
@@ -42,7 +50,7 @@ public class CartController {
 
 	@RequestMapping(value="/login", method = RequestMethod.GET)
 	public String loginpage(@ModelAttribute("CustomerLogin")CustomerLogin customer,ModelMap model) {
-		return "/login";
+		return "/cart/login";
 	}
 
 	@RequestMapping(value="/showProductList", method = RequestMethod.POST)
@@ -55,7 +63,7 @@ public class CartController {
 				ssn.setAttribute("uname", customer.getUname());
 				uname = customer.getUname();
 				model.addAttribute("message",customer.getUname());
-				return "/showProductList";
+				return "/cart/showProductList";
 			}
 		}
 		model.addAttribute("addedToCartOrNot","Item is added to cart");
@@ -63,18 +71,17 @@ public class CartController {
 	}
 
 	@RequestMapping(value="/addToCart", method = RequestMethod.POST)
-	@ExceptionHandler({allExceptions.class})
+	@ExceptionHandler({com.bitwise.onlineShoppingCart.exceptionHandling.allExceptions.class})
 	public String addToCart(HttpServletRequest request, HttpServletResponse response,@RequestParam("item") String item,@ModelAttribute("ProductList") ProductList product,BindingResult result,ModelMap model) throws allExceptions{
 		uname = (String)request.getSession().getAttribute("uname"); 
 		if(item.equalsIgnoreCase("select")){
-			System.out.println("1");
 			model.addAttribute("addToCartError","Select some value");
 		}
 		else{
 			new CustomerDAO().addToCart(uname,item);
 			model.addAttribute("addedToCartOrNot","Item is added to cart");
 		}
-		return "/showProductList";
+		return "/cart/showProductList";
 	}
 
 	@RequestMapping(value="/showMyCart", method = RequestMethod.POST)
@@ -83,7 +90,7 @@ public class CartController {
 		ArrayList<Product> listOfProducts = new CustomerDAO().getMyCart(uname);
 		System.out.println(listOfProducts.size());
 		model.addAttribute("list",listOfProducts);
-		return "/showMyCart";
+		return "/cart/showMyCart";
 	}
 
 	@RequestMapping(value="/RemoveSelectedProduct", method = RequestMethod.POST)
@@ -91,7 +98,7 @@ public class CartController {
 		ArrayList<Product> listOfProducts = new CustomerDAO().getMyCart(uname);
 		System.out.println(listOfProducts.size());
 		model.addAttribute("list",listOfProducts);
-		return "/RemoveSelectedProduct";
+		return "/cart/RemoveSelectedProduct";
 	}
 
 	@RequestMapping(value="/removeProduct", method = RequestMethod.POST)
@@ -113,12 +120,12 @@ public class CartController {
 		float totalAmount = new CustomerDAO().getTotalAmount();
 		model.addAttribute("list",listOfProducts);
 		model.addAttribute("totalAmount",totalAmount);
-		return "/placeOrder";
+		return "/cart/placeOrder";
 	}
 
 	@RequestMapping(value="/logout", method = RequestMethod.POST)
 	public String logout(ModelMap model) {
-		return "/logout";
+		return "/logout/logout";
 	}
 
 	@RequestMapping(value="/ajaxShowProductDetails", method = RequestMethod.GET)
