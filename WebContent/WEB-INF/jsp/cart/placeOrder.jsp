@@ -12,13 +12,23 @@
 <center>
 <h3><font color="GREEN">Place Your Order</font></h3>
 <h4>Product    Price</h4>
-         <ul>
-			<c:forEach var="l" items="${list}">
-				<li>${l.name}</li>-->${l.price}
+         <table>
+            <tr>
+            <th>Product Name<th>Product Color<th>Product Size in Stock<th>Product Cost
+            
+            <c:forEach var="l" items="${list}">
+				<tr><td>${l.name}<td>${l.color}<td>${l.sizeInStock}<td>${l.price}
 			</c:forEach>
-		</ul>
+         </table>
+			
 		<h3>Total Price:-</h3>
-		<h4>${totalAmount}</h4><span>${totalAmount}</span>
+		<span>${totalAmount}</span>
+		<br>
+		<br>
+		<form:form method="post" action="/SpringOnlineShoppingCart/addMoreProducts">
+	  	  <input type="submit" value="Add More Products to the Cart">
+		</form:form>
+		<br><br>
 		<%@include file="../logout/logoutButton.jsp" %>
 </center>
 </body>

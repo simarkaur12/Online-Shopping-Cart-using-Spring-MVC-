@@ -45,13 +45,14 @@ Welcome <h2><font color="red">${uname}</font></h2>
 		<div id="result"></div>
 		<input type="submit" value="Add To Cart" />
 	</form:form>
-	
+	<br><br>
 	<form:form action="/SpringOnlineShoppingCart/showMyCart">
 	   <input type="submit" value="Show My Cart" />
 	</form:form>
-	
+	<br><br>
 </fieldset>
 </center>
+<br><br>
 <%@include file="../logout/logoutButton.jsp" %>
 </body>
 </html>

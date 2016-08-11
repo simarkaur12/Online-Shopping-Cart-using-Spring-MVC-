@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <beans xmlns="http://www.springframework.org/schema/beans"
-   xmlns:context="http://www.springframework.org/schema/context"
-    xmlns:mvc="http://www.springframework.org/schema/mvc"
-   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-   xsi:schemaLocation="
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
    http://www.springframework.org/schema/beans     
    http://www.springframework.org/schema/beans/spring-beans.xsd
    http://www.springframework.org/schema/context 
@@ -12,19 +11,95 @@
    http://www.springframework.org/schema/mvc
    http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
-   <context:component-scan base-package="com.bitwise.onlineShoppingCart" />
-   <mvc:annotation-driven />
-   <bean id="allExceptions" class="com.bitwise.onlineShoppingCart.exceptionHandling.allExceptions"></bean>
+	<context:component-scan base-package="com.bitwise.onlineShoppingCart" />
+	<mvc:annotation-driven />
+	<bean id="allExceptions"
+		class="com.bitwise.onlineShoppingCart.exceptionHandling.allExceptions"></bean>
 
-   <mvc:resources mapping="/resources/**" location="/resources/" />
-   
-   <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-      <property name="prefix" value="/WEB-INF/jsp/" />
-      <property name="suffix" value=".jsp" />
-   </bean>
-  
-   <bean id="LoginValidator" class="com.bitwise.onlineShoppingCart.Models.LoginValidator">
-   </bean>
-  
-   
+	<mvc:resources mapping="/jsFiles/**" location="/jsFiles/" />
+
+	<bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/jsp/" />
+		<property name="suffix" value=".jsp" />
+	</bean>
+
+	<bean id="LoginValidator" class="com.bitwise.onlineShoppingCart.Models.LoginValidator">
+	</bean>
+
+	<!-- <bean
+		class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+		<property name="exceptionMappings">
+			<props>
+				<prop
+					key="com.bitwise.onlineShoppingCart.exceptionHandling.allExceptions">
+					error/globalErrorPage
+				</prop>
+			</props>
+		</property>
+	</bean>
+	 -->
+	 <!-- 
+	<bean
+		class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+		<property name="exceptionMappings">
+			<props>
+				<prop key="java.lang.RuntimeException">
+					error/globalErrorPage
+				</prop>
+			</props>
+		</property>
+	</bean>
+ -->
+
+
+    <bean name="CustomerDetails" class="com.bitwise.onlineShoppingCart.Models.CustomerDetails">
+        <property name="security">  
+			<map>  
+				<entry key="simar"  value="simar"></entry>  
+				<entry key="abc" value="abc"></entry>  
+				<entry key="aaa" value="aaa"></entry> 
+			</map>  
+		</property> 
+    </bean>
+    
+	<bean name="Product1" class="com.bitwise.onlineShoppingCart.Models.Product">
+		<property name="name" value="Car"></property>
+		<property name="price" value="2000000"></property>
+		<property name="color" value="Red"></property>
+		<property name="sizeInStock" value="5"></property>
+	</bean>
+	<bean name="Product2" class="com.bitwise.onlineShoppingCart.Models.Product">
+
+		<property name="name" value="Mobile"></property>
+		<property name="price" value="50000"></property>
+		<property name="color" value="Black"></property>
+		<property name="sizeInStock" value="20"></property>
+	</bean>
+	<bean name="Product3" class="com.bitwise.onlineShoppingCart.Models.Product">
+
+		<property name="name" value="Watch"></property>
+		<property name="price" value="30000"></property>
+		<property name="color" value="Golden"></property>
+		<property name="sizeInStock" value="20"></property>
+	</bean>
+	<bean name="Product4" class="com.bitwise.onlineShoppingCart.Models.Product">
+
+		<property name="name" value="Bentley"></property>
+		<property name="price" value="385000"></property>
+		<property name="color" value="Red"></property>
+		<property name="sizeInStock" value="1"></property>
+	</bean>
+	<bean name="ProductList" class="com.bitwise.onlineShoppingCart.Models.ProductList"
+		scope="singleton">
+		<property name="allProducts">
+			<list>
+				<ref bean="Product1" />
+				<ref bean="Product2" />
+				<ref bean="Product3" />
+				<ref bean="Product4" />
+			</list>
+		</property>
+	</bean>
+
 </beans>

@@ -44,7 +44,7 @@ public class ProductController {
 		ArrayList<Product> list = new ProductList().getAllProducts();
 		for(Product product : list){
 			if(product.getName().equalsIgnoreCase(item)){
-				result =  product.getName()+","+product.getPrice()+","+product.getSize()+","+product.getColor();
+				result =  product.getName()+","+product.getPrice()+","+product.getSizeInStock()+","+product.getColor();
 				return result;
 			}
 		}

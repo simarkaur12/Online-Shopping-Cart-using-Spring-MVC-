@@ -1,5 +1,6 @@
 package com.bitwise.onlineShoppingCart.DAO;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -21,16 +22,17 @@ public class CustomerDAO {
 		System.out.println(item);
 		for(Product product : allproducts){
 			if(product.getName().equals(item)){
-				System.out.println("before :" + product.getSize());
-				if(product.getSize()<=0){
+				System.out.println("before :" + product.getSizeInStock());
+				if(product.getSizeInStock()<=0){
 					//error   ---  out of stock
 					System.out.println("error out of exception");
 					throw new RuntimeException();
+					//throw new allExceptions();
 				}
 				else{
-					product.setSize(product.getSize()-1);
+					product.setSizeInStock(product.getSizeInStock()-1);
 					customerList.add(product);
-					System.out.println("after :" + product.getSize());
+					System.out.println("after :" + product.getSizeInStock());
 				}
 			}
 		}

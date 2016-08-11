@@ -7,15 +7,15 @@ public class CustomerDetails {
 	static HashMap<String, String> security = new HashMap<>();
 	
 	public CustomerDetails() {
-		// TODO Auto-generated constructor stub
-	    security.put("simar", "simar");
-	    security.put("abc", "abc");
-	    security.put("aaa", "aaa");
+	    
 	}
-	
-	public HashMap<String, String> getSecurity(){
+
+	public static HashMap<String, String> getSecurity() {
 		return security;
 	}
-	
+
+	public static void setSecurity(HashMap<String, String> security) {
+		CustomerDetails.security = security;
+	}
 	
 }

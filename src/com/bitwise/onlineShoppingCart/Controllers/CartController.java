@@ -48,38 +48,42 @@ public class CartController {
 	}
 
 	@RequestMapping(value="/showProductList", method = RequestMethod.POST)
-	public String goToList(HttpServletRequest request, HttpServletResponse response, @ModelAttribute("CustomerLogin")CustomerLogin customer,BindingResult result,@ModelAttribute("ProductList")ProductList product,BindingResult result2,ModelMap model){
+	public ModelAndView goToList(HttpServletRequest request, HttpServletResponse response, @ModelAttribute("CustomerLogin")CustomerLogin customer,BindingResult result,@ModelAttribute("ProductList")ProductList product,BindingResult result2,ModelMap model){
 		security = new CustomerDetails().getSecurity();
 		LoginValidator.validate(customer, result);
 		if(!result.hasErrors()){
 			if(!customer.getUname().equals("")&&!customer.getPassword().equals("") && security.containsKey(customer.getUname()) && security.get(customer.getUname()).equals(customer.getPassword())){
 				HttpSession ssn = request.getSession();
 				ssn.setAttribute("uname", customer.getUname());
-				//uname = customer.getUname();
 				model.addAttribute("uname",customer.getUname());
-				return "/cart/showProductList";
+				return new ModelAndView("/cart/showProductList",model);
 			}
 		}
 		model.addAttribute("error","Please Enter Valid Username and Password....!");
-		return "/cart/login";
+		return new ModelAndView("/cart/login",model);
+	}
+	
+	@RequestMapping(value="/addMoreProducts", method = RequestMethod.POST)
+	public ModelAndView AddMoreProducts(@ModelAttribute("ProductList")ProductList product,BindingResult result2,ModelMap model){
+		return new ModelAndView("/cart/showProductList",model);
 	}
 
 	@RequestMapping(value="/showMyCart", method = RequestMethod.POST)
-	public String showMyCart(HttpServletRequest request, HttpServletResponse response,@ModelAttribute("CustomerLogin")CustomerLogin customer,BindingResult result,ModelMap model) {
+	public ModelAndView showMyCart(HttpServletRequest request, HttpServletResponse response,@ModelAttribute("CustomerLogin")CustomerLogin customer,BindingResult result,ModelMap model) {
 		String uname = (String)request.getSession().getAttribute("uname");
 		ArrayList<Product> listOfProducts = new CustomerDAO().getMyCart(uname);
 		System.out.println(listOfProducts.size());
 		model.addAttribute("list",listOfProducts);
-		return "/cart/showMyCart";
+		return new ModelAndView("/cart/showMyCart",model);
 	}
 
 	@RequestMapping(value="/RemoveSelectedProduct", method = RequestMethod.GET)
-	public String removeFromCart(HttpServletRequest request, HttpServletResponse response,@ModelAttribute("ProductList")ProductList product,BindingResult result,ModelMap model) {
+	public ModelAndView removeFromCart(HttpServletRequest request, HttpServletResponse response,@ModelAttribute("ProductList")ProductList product,BindingResult result,ModelMap model) {
 		String uname = (String)request.getSession().getAttribute("uname");
 		ArrayList<Product> listOfProducts = new CustomerDAO().getMyCart(uname);
 		System.out.println(listOfProducts.size());
 		model.addAttribute("list",listOfProducts);
-		return "/cart/RemoveSelectedProduct";
+		return new ModelAndView("/cart/RemoveSelectedProduct",model);
 	}
 
 	@RequestMapping(value="/RemoveSelectedProduct", method = RequestMethod.POST)
@@ -94,12 +98,12 @@ public class CartController {
 	}
 
 	@RequestMapping(value="/placeOrder", method = RequestMethod.POST)
-	public String placeOrder(HttpServletRequest request, HttpServletResponse response,@ModelAttribute("CustomerLogin")CustomerLogin customer,BindingResult result,ModelMap model) {
+	public ModelAndView placeOrder(HttpServletRequest request, HttpServletResponse response,@ModelAttribute("CustomerLogin")CustomerLogin customer,BindingResult result,ModelMap model) {
 		String uname = (String)request.getSession().getAttribute("uname");
 		ArrayList<Product> listOfProducts = new CustomerDAO().getMyCart(uname);
 		float totalAmount = new CustomerDAO().getTotalAmount();
 		model.addAttribute("list",listOfProducts);
 		model.addAttribute("totalAmount",totalAmount);
-		return "/cart/placeOrder";
+		return new ModelAndView("/cart/placeOrder",model);
 	}
 }

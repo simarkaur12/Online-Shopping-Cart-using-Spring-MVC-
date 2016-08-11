@@ -8,7 +8,7 @@ import org.springframework.web.servlet.ModelAndView;
 @ControllerAdvice
 public class allExceptions extends Throwable{
 	private static final long serialVersionUID = 1L;
-	@ExceptionHandler(value={ Throwable.class,RuntimeException.class, Exception.class})
+	@ExceptionHandler(value= Throwable.class)
 	public ModelAndView ProductItemOutOfStock(ModelMap model){
 		model.addAttribute("error","Poduct Item Is out of stock");
 		return new ModelAndView("globalErrorPage",model);

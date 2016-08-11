@@ -9,6 +9,7 @@
 <body>
 <h4>
   <font color="red">${error}</font>
+  Hello
 </h4>
 </body>
 </html>

@@ -34,10 +34,13 @@ public class Product {
 	public void setColor(String color) {
 		this.color = color;
 	}
-	public int getSize() {
+
+	public int getSizeInStock() {
 		return sizeInStock;
 	}
-	public void setSize(int size) {
-		this.sizeInStock = size;
+
+	public void setSizeInStock(int sizeInStock) {
+		this.sizeInStock = sizeInStock;
 	}
+	
 }

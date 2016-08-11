@@ -17,16 +17,20 @@
 				<li>${l.name}</li>
 			</c:forEach>
 		</ul>
-		
+		<br><br>
 		<form:form method="get" action="/SpringOnlineShoppingCart/RemoveSelectedProduct">
 		   <input type="submit" value="Remove From Cart" />
 		</form:form>
 		
-		
+		<br><br>
 		<form:form method="post" action="/SpringOnlineShoppingCart/placeOrder">
 	  	  <input type="submit" value="Place Order">
 		</form:form>
-		
+		<br><br>
+		<form:form method="post" action="/SpringOnlineShoppingCart/addMoreProducts">
+	  	  <input type="submit" value="Add More Products to the Cart">
+		</form:form>
+		<br><br>
 		<%@include file="../logout/logoutButton.jsp" %>
 </center>
 </body>

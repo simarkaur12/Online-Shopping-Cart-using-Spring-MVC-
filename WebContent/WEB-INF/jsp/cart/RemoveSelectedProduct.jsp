@@ -21,8 +21,12 @@
 			</c:forEach>
 	  	  </form:select>
 	  	  <input type="submit" value="Remove this item" />
-	  	  
+	  	  <br><br>
 		</form:form>
+		<form:form method="post" action="/SpringOnlineShoppingCart/addMoreProducts">
+	  	  <input type="submit" value="Add More Products to the Cart">
+		</form:form>
+		<br><br>
 		<%@include file="../logout/logoutButton.jsp" %>
 </body>
 </html>
